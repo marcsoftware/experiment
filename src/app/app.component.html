@@ -3,18 +3,18 @@
 
 
 </div>
-
+<button (click)="prevPage()">prev</button>{{page_count+1}}
+<button (click)="nextPage()">next</button>
 
 <pre [innerHTML]="now" id='now'></pre>
-<input (keyup.enter)="hardInput($event)"  #firstNameInput />{{feedback}}
+<input (keyup.space)="hardInput($event)"  #firstNameInput />{{feedback}}
 
 
 
 
 <br/>
 
-<button (click)="prevPage()">prev</button>{{page_count+1}}
-<button (click)="nextPage()">next</button>
+
 
 
 <pre [innerHTML]="ans_key" id='key'></pre>
