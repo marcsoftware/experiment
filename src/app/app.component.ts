@@ -50,41 +50,47 @@ export class AppComponent {
     `,`
     Need JRE java runtime environment  to run java applicatoins.
     NEED JDK to compile java programs .
-    The JDK adds a java compile on top of the JRE standard libraries and JVM.
+    The JDK adds co,piler on top of the JRE standard libraries and JVM.
 
-    Java source code is written in files with a .java extension.
-    It is then compiled into bytecode into a .class file by javac.
-    The bytecode is then executed by JVM. Which translates the java commands into low-level instructions to the operating
-    system.
+    Java source code has.java extension.
+    bytecode has .class extension. javac converts to byte code.
+    JVM executes bytecode
+    or translates the java commands into low-level instructions of the operating system.
 
     All java programs run inside a container , and start and end with a main method.
 
-    public is a Java access modifier keyword that means the main method can be accessed from any method during the
+    :Java access modifier keywords:
+    public - that means the main method can be accessed from any method during the
     program's execution.
-    static is a Java keyword that means the method can be invoked without creating an instance of the class that
+    static i- that means the method can be invoked without creating an instance of the class that
      contains it, making it a global method.
-    void is a Java return type keyword that means the method doesn't return any values of any data type.
-    args is a Java variable of type String array which means the method can take command line arguments as an
-    array of Strings
+     :return type keyword:
+    void - the method doesn't return any values of any data type.
+    ::
+    args - String array that holds command line arguments.
 
     `,`
-    Abstraction By simplifying objects to a set of
+    Abstraction- By simplifying objects to a set of
     useful features, we hide irrelevant details, reduce complexity, and increase efficiency. Complicated
     real-world objects are reduced to simple representations
-    Encapsulation Objects should group together related variables and functions and be in complete control
+
+    Encapsulation - Objects should group together related variables and functions and be in complete control
      over them. So the state of an object should only change, if ever, through the object itself. Also known
       as data hiding, because the object has sole responsibility for its fields, and no outside object or
        function should interfere.
-    Inheritance Code reuse is an important principle of programming (DRY - Don't Repeat Yourself), and new
+
+    Inheritance -
     classes can reuse code from existing ones. This establishes a superclass-subclass (or parent-child)
-    relationship where the derived classes inherit (and sometimes change) fields and methods from its parent.a
-    Polymorphism With inheritance, an object of a derived class can be referenced as instances of its parent
+    relationship where the derived classes inherit fields and methods from its parent.
+
+    Polymorphism - With inheritance, an object of a derived class can be referenced as instances of its parent
      class. This provides flexibility when invoking inherited methods with varying implementations in derived classes.
-    Scope is based  is based on the location of a veriables  declaration.
-    Static or class scoped variables are visible to all instances of a related class. Instance or object
-    scoped variables are visible to only that object instance.
-    Local or method scoped variables are visible only within a method.
-    Block or loop scoped variables are visible only within a block statement.
+
+    Scope : is based on location of the declaration.
+    Static or class scoped -visible to all instances of a related class.
+    Instance or object scoped - visible to only that object instance.
+    Local or method scoped - visible only within a method.
+    Block or loop scoped - visible only within a block statement.
     `,`
     Access modifiers
     private - accessible only within the context of that class
@@ -93,9 +99,10 @@ export class AppComponent {
     public - accessible anywhere
     `,`
     Exception Handling
-When an something wrong occurs during execution, the current stack frame will throw an exception. If the
-exception is not handled, or thrown up the stack to be handled elsewhere, the program will crash. Good
-exception handling helps a program continue execution. Common issues which can throw exceptions involve
+When an something wrong occurs during execution, the current stack frame will throw an exception.
+If the exception is not handled, or thrown up the stack to be handled elsewhere, the program will crash.
+Good exception handling helps a program continue execution.
+Common issues which can throw exceptions involve :
 stack or heap memory overflow, an array iterating out of bounds, or an interrupted stream or thread.
 
 Checked exceptions Unchecked exceptions / Runtime exceptions Errors Runtime and unchecked exceptions
