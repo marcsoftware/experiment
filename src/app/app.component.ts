@@ -22,9 +22,9 @@ export class AppComponent {
 
 
    dict=[`
-   git : saves snapshot of  project on or more branching paths.
+   git : saves snapshots of project on one or more branching paths.
    Repository : currently active project folder
-   staging area:  place where changes are added before commiting
+   staging area: place where changes are added before commiting
    commit : snapshot of changes
    branch : named pointer to a commit
    head : pointer to current branch
