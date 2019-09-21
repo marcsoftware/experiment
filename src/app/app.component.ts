@@ -11,7 +11,7 @@ export class AppComponent {
   math = Math;// hack since angular does not recognize Math on the html page,
   question :string;
   feedback :any;
-
+ page_count=0;
 
   count=0;
  now;
@@ -36,14 +36,25 @@ export class AppComponent {
    git remote add origin URL
    git push -u origin master
 
-    `];
+    `,`
+     java is a object oriented programming language.
+       Features:
+       platform independent : It can run on any platform that supports java.
+                             compiler converts sourcecode to byte code,
+                             then the jvm executes the byte code.
+                             Each OS has its own JVM for executing byte code.
+       Clear verbose syntax :
+       multi-paradigm : is object oriented but supports imperative, generic, concurrent functional paradigms as well.
+       Garbage collection : JVM performs automatic de-allocation of unused objects at runtime.
+       Multithreading : allows concurrent and parallel execution of several parts of a java program
+  `];
 
 
 
   ngOnInit() {
 
 
-    this.ans_key=this.dict[0];
+    this.ans_key=this.dict[this.page_count];
       this.drawQuestion();
   }
 
@@ -131,7 +142,15 @@ export class AppComponent {
 
 
   nextPage(){
+    this.page_count++;
+    this.ans_key=this.dict[this.page_count];
+      this.drawQuestion();
+  }
 
+  prevPage(){
+      this.page_count--;
+      this.ans_key=this.dict[this.page_count];
+      this.drawQuestion();
   }
 
 }
