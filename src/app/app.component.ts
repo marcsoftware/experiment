@@ -48,9 +48,9 @@ export class AppComponent {
        Garbage collection : JVM performs automatic de-allocation of unused objects at runtime.
        Multithreading : allows concurrent and parallel execution of several parts of a java program
     `,`
-    Need JRE java runtime environment  to run java applicatoins.
+    Need JRE java runtime environment  to run java applications.
     NEED JDK to compile java programs .
-    The JDK adds co,piler on top of the JRE standard libraries and JVM.
+    The JDK adds compiler on top of the JRE standard libraries and JVM.
 
     Java source code has.java extension.
     bytecode has .class extension. javac converts to byte code.
@@ -60,12 +60,12 @@ export class AppComponent {
     All java programs run inside a container , and start and end with a main method.
 
     :Java access modifier keywords:
-    public - that means the main method can be accessed from any method during the
+    public - the main method can be accessed from any method during the
     program's execution.
-    static i- that means the method can be invoked without creating an instance of the class that
+    static - the method can be invoked without creating an instance of the class that
      contains it, making it a global method.
      :return type keyword:
-    void - the method doesn't return any values of any data type.
+    void - the method doesn't return any value.
     ::
     args - String array that holds command line arguments.
 
@@ -274,19 +274,20 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
 
   }
 
-  //check users input, and five user right/wrong feedback
-  checkInput(event: any){
-    let user_input=event.target.value;
-    if(user_input === ''){
-      this.feedback='';
-      return;
-    }
-    this.feedback=this.ans_key.includes(user_input);
-    if(this.feedback){
-      this.feedback='yes';
-    }
 
-
+  //show hint when user hit ?
+  flag=false;
+  hint(event:any){
+    let user_input=event.target.value.trim();
+    if(user_input==='?'){
+      this.now=this.ans_key;
+      this.flag=true;
+    }else{
+      if(this.flag){
+        this.flag=false;
+          this.drawQuestion();
+      }
+    }
   }
 
 
