@@ -75,9 +75,8 @@ export class AppComponent {
     real-world objects are reduced to simple representations
 
     Encapsulation - Objects should group together related variables and functions and be in complete control
-     over them. So the state of an object should only change, if ever, through the object itself. Also known
-      as data hiding, because the object has sole responsibility for its fields, and no outside object or
-       function should interfere.
+     over them. So the state of an object should only change through the object itself. Also known
+      as data hiding and no outside object or function should interfere.
 
     Inheritance -
     classes can reuse code from existing ones. This establishes a superclass-subclass (or parent-child)
@@ -94,7 +93,7 @@ export class AppComponent {
     `,`
     Access modifiers
     private - accessible only within the context of that class
-    default - accessible within the context of a package, has no associated keyword so is set when no modifier is used
+    default - accessible within the context of a package
     protected - accessible to the package, but also to derived child classes outside of the package
     public - accessible anywhere
     `,`
@@ -279,7 +278,7 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
   flag=false;
   hint(event:any){
     let user_input=event.target.value.trim();
-    if(user_input==='?'){
+    if(user_input===';'){
       this.now=this.ans_key;
       this.flag=true;
     }else{
@@ -308,9 +307,14 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
     var re = new RegExp(replace,"gi");
 
     this.feedback=this.ans_key.search(re);
+
     if(this.feedback !== -1){
       this.feedback='yes';
+    }else{
+      this.feedback='no';
     }
+      this.feedback+=' '+user_input;
+
 
     this.ans_key=this.ans_key.replace(re,'\$1ϯ\$2ϯ\$3');
     this.ans_key=this.ans_key.replace(/ϯ+/g,'ϯ');
