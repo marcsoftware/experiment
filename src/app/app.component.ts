@@ -98,43 +98,45 @@ export class AppComponent {
     public - accessible anywhere
     `,`
     Exception Handling
-When an something wrong occurs during execution, the current stack frame will throw an exception.
+When something wrong occurs during execution, the current stack frame will throw an exception.
 If the exception is not handled, or thrown up the stack to be handled elsewhere, the program will crash.
 Good exception handling helps a program continue execution.
 Common issues which can throw exceptions involve :
 stack or heap memory overflow, an array iterating out of bounds, or an interrupted stream or thread.
 
-Checked exceptions Unchecked exceptions / Runtime exceptions Errors Runtime and unchecked exceptions
- refer to the same thing. We can often use them interchangeably.
 Checked Exceptions are compile-time issues that must be handled or thrown before the compiler can
  build, such as IOException. Unchecked Exceptions occur at runtime, so the compiler cannot predict
- them and does not force they be handled. Most unchecked exceptions extend RuntimeException, such as
+ them and does not force them to be handled. Most unchecked exceptions extend RuntimeException, such as
  NullPointerException. Errors are serious issues and should not be handled, such as StackOverflowError.
-Throws
+
+ :Throws:
 The throws keyword re-throws an exception up the stack to the method that called the throwing method.
 If the exception is continually thrown and never handled, the compiler will be satisfied in the case
  of checked exceptions but any issues will still break the program.
 
     `,`
-    Finally
-    Try blocks can be followed by one finally block, and can either replace the mandatory single catch
-     block or follow one or more catch blocks. They are always guaranteed to execute, even if no exceptions
+    :Finally:
+      Try blocks can be followed by one finally block, and can either replace the mandatory single catch
+      block or follow one or more catch blocks. They are always guaranteed to execute, even if no exceptions
       are thrown, and are useful for closing resources that may be left open in memory due to an interruption
-       from a thrown exception.
-    Try-with-resources
-    Declaring and defining a resource - any object that implements AutoCloseable - within a pair of
-    parenthesis after the try keyword removes the necessity of a finally block to close that resource.
-    InputStream/OutputStream -> BufferedReader/BufferedWriter
-    The JVM can connect to external datasources such as files or network ports. InputStream/OutputStream
-     and its implementations stream this data as an array of bytes whereas Reader/Writer and its
-     implementations wrap InputStream/OutputStream to stream data as a char array. BufferedReader/BufferedWriter
-     wraps Reader/Writer to stream several characters at a time, minimizing the number of I/O operations needed.
-    Scanner
-    BufferedReader provides many convenient methods for parsing data. Scanner can achieve the same, but unlike
-     BufferedReader it is not thread-safe. It can however parse primitive types and Strings with regular
-     expressions. Scanner has a buffer as well but its size is fixed and smaller than BufferedReader by
-     default. BufferedReader requires handling IOException while Scanner does not. Thus, Scanner is best
-     used for parsing input into tokenized Strings.
+      from a thrown exception.
+
+    :Try-with-resources:
+      Declaring and defining a resource - any object that implements AutoCloseable - within a pair of
+      parenthesis after the try keyword removes the necessity of a finally block to close that resource.
+
+    : InputStream/OutputStream -> BufferedReader/BufferedWriter :
+        The JVM can connect to external datasources such as files or network ports. InputStream/OutputStream
+        and its implementations stream this data as an array of bytes whereas Reader/Writer and its
+        implementations wrap InputStream/OutputStream to stream data as a char array. BufferedReader/BufferedWriter
+        wraps Reader/Writer to stream several characters at a time, minimizing the number of I/O operations needed.
+
+     :Scanner:
+        BufferedReader provides many convenient methods for parsing data. Scanner can achieve the same, but unlike
+        BufferedReader it is not thread-safe. It can however parse primitive types and Strings with regular
+        expressions. Scanner has a buffer as well but its size is fixed and smaller than BufferedReader by
+        default. BufferedReader requires handling IOException while Scanner does not. Thus, Scanner is best
+        used for parsing input into tokenized Strings.
     `,`
     Generics
     When passing objects into methods and data structures, a developer can overload or extend for its specific
@@ -280,7 +282,8 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
   drawProgress(){
       this.now=this.now.replace(/ϯ/g,'');
       this.total_words=this.now.match(/[^\ ]+/g).length;
-      this.done_count=this.now.match(/[^#\W]+/g).length;
+      let blanks_count= this.now.match(/\#+/g).length;
+      this.done_count=this.total_words-blanks_count;
   }
 
 
