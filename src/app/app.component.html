@@ -4,7 +4,7 @@
 
 </div>
 <button (click)="prevPage()">prev</button>{{page_count+1}}
-<button (click)="nextPage()">next</button>
+<button (click)="nextPage()">next</button>{{done_count}} /{{total_words}}
 
 <pre [innerHTML]="now" id='now'></pre>
 <input (keyup.space)="hardInput($event)" (keyup)='hint($event)' #firstNameInput />{{feedback}}

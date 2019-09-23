@@ -16,8 +16,8 @@ export class AppComponent {
   count=0;
  now;
 
-
-
+ total_words=0;
+ done_count=0;
   ans_key;
 
 
@@ -246,7 +246,9 @@ Functions Custom function with 0 or many input parameters, but 0 or 1 output. DM
 Stored Procedures Custom function with 0 or many input parameters, but 0 or many output parameters. DML allowed
     `,`done`];
 
-
+  //=================================================================
+  //
+  //=================================================================
 
   ngOnInit() {
 
@@ -255,38 +257,49 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
       this.drawQuestion();
   }
 
+
+  //=================================================================
+  //
+  //=================================================================
   //displays question to user
   //renders stuff on screen
   drawQuestion(){
 
-//
-   // this.now=this.ans_key.replace(/[^Φ\W]/g,'Φ');
-   //this.now=this.ans_key.replace(/ϯ[^ϯ]+ϯ|(\w)/g,'X');
-   //this.now=this.ans_key.replace(/ϯ[^ϯ]+ϯ|(\w)/g,'X');
- let regex = /ϯ[^ϯ]+ϯ|(\w)/g;
-   this.now = this.ans_key.replace(regex, function(m, group1) {
-    if (!group1) return m;
-    else return "#";
-});
+      let regex = /ϯ[^ϯ]+ϯ|(\w)/g;
+        this.now = this.ans_key.replace(regex, function(m, group1) {
+          if (!group1) return m;
+          else return "#";
+      });
 
-  this.now=this.now.replace(/ϯ/g,'');
+        this.drawProgress();
+  }
 
+  //=================================================================
+  //
+  //=================================================================
+  drawProgress(){
+      this.now=this.now.replace(/ϯ/g,'');
+      this.total_words=this.now.match(/[^\ ]+/g).length;
+      this.done_count=this.now.match(/[^#\W]+/g).length;
   }
 
 
+  //=================================================================
+  //
+  //=================================================================
   //show hint when user hit ?
   flag=false;
   hint(event:any){
-    let user_input=event.target.value.trim();
-    if(user_input===';'){
-      this.now=this.ans_key;
-      this.flag=true;
-    }else{
-      if(this.flag){
-        this.flag=false;
-          this.drawQuestion();
-      }
-    }
+        let user_input=event.target.value.trim();
+        if(user_input===';'){
+          this.now=this.ans_key;
+          this.flag=true;
+        }else{
+          if(this.flag){
+            this.flag=false;
+              this.drawQuestion();
+          }
+        }
   }
 
 
