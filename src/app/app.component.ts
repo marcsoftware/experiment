@@ -138,47 +138,45 @@ If the exception is continually thrown and never handled, the compiler will be s
         default. BufferedReader requires handling IOException while Scanner does not. Thus, Scanner is best
         used for parsing input into tokenized Strings.
     `,`
-    Generics
-    When passing objects into methods and data structures, a developer can overload or extend for its specific
-     type or cast the object up and down its inheritance heirarchy. In contrast a generic type improves code
-      reuse and type safety, reducing code by allowing methods and data structures to accept any type without
-      risking dynamic runtime exceptions. Generic type parameters act as placeholders in a method signature
-       while diamond operators specify the type for the compiler to enforce at compile time:
+    :Generics:
+When passing objects into methods and data structures, a developer can overload or extend for its specific
+type or cast the object up and down its inheritance heirarchy. In contrast a generic type improves code
+reuse and type safety, reducing code by allowing methods and data structures to accept any type without
+risking dynamic runtime exceptions. Generic type parameters act as placeholders in a method signature
+while diamond operators specify the type for the compiler to enforce at compile time:
 
-       Collections Framework
+       :Collections Framework:
 Java's collections framework implement common data structures for objects.
-List is an ordered collection of elements. A user has the ability to place an element anywhere in the list.
- The elements are accessable by their index. Unlike Set, List typically allows for duplicate elements such
- that element1.equals(element2). In addition to duplicates, List allow for multiple null elements to be stored.
-Set is a collection of non duplicate elements meaning there will never exist a situation where element1.
-equals(element2). In addition to this, it is implied that there can only exist one null element due to
-the no duplicates rule.
-Queue is a collection of elements who in essence cannot be iterated, instead the Queue follows the
- FIFO (First In First Out) rule. When an element is added to the Queue it is placed at the back and
- when an element is pulled it is pulled from the from the front (index :0).
-Deque extends Queue but augments the ability to insert and remove elements at either end. The name
- is short for "Double Ended Queue" and is pronounced "Deck".
-Map is an interface which stores data with a key. A map cannot contain duplicate keys; each key
-can map to at most one value. Map can be visualized like a dictionary where only one word is paired
- with one definition.
+  - List is an ordered collection of elements. A user has the ability to place an element anywhere in the list.
+    The elements are accessable by their index. Unlike Set, List typically allows for duplicate elements such
+    that element1.equals(element2). In addition to duplicates, List allow for multiple null elements to be stored.
+  - Set is a collection of non duplicate elements meaning there will never exist a situation where element1.
+    equals(element2). In addition to this, it is implied that there can only exist one null element due to
+    the no duplicates rule.
+
+  - Queue is a collection of elements who in essence cannot be iterated, instead the Queue follows the
+    FIFO (First In First Out) rule. When an element is added to the Queue it is placed at the back and
+    when an element is pulled it is pulled from the from the front (index :0).
+  - Deque extends Queue but augments the ability to insert and remove elements at either end. The name
+    is short for "Double Ended Queue" and is pronounced "Deck".
+  - Map is an interface which stores data with a key. A map cannot contain duplicate keys; each key
+    can map to at most one value. Map can be visualized like a dictionary where only one word is paired
+    with one definition.
     `,`
-    Threads
+    :Threads:
     A thread is a unit of program execution that runs independently from other threads. Java programs
-     can consist of multiple threads of execution that behave as if they were running on independent CPUs.
+    can consist of multiple threads of execution that behave as if they were running on independent CPUs.
 
      Extend Thread
      Implement Runnable
      Anonymous Runnable Class
      Runnable Lambda
     `,`
-    Maven
+    :Maven:
     Opinionated project management tool for build automation, dependency management, and other actions.
-     Once installed, use with
-    the mvn command. Allows for a project to be IDE agnostic. See the official Maven project for documentation:
-    http://maven.apache.org/index.html as well as the mvn repository to find available libraries:
-    https://mvnrepository.com/
+    Once installed, use with the mvn command. Allows for a project to be IDE agnostic.
 
-    maven build cycle
+    maven build cycle:
     validate compile test package verify install deploy
 
     commands
@@ -297,6 +295,10 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
         if(user_input===';'){
           this.now=this.ans_key;
           this.flag=true;
+        }else if(user_input===';;'){
+          event.target.value='';
+          this.flag=false;
+              this.drawQuestion();
         }else{
           if(this.flag){
             this.flag=false;
