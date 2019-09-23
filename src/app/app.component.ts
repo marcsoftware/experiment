@@ -22,229 +22,282 @@ export class AppComponent {
 
 
    dict=[`
-   git : saves snapshots of project on one or more branching paths.
-   Repository : currently active project folder
-   staging area: place where changes are added before commiting
-   commit : snapshot of changes
-   branch : named pointer to a commit
-   head : pointer to current branch
-   remote : link to external repository
-
-   git init
-   git add .
-   Git commit -m “message”
-   git remote add origin URL
-   git push -u origin master
-
-    `,`
-     java is a object oriented programming language.
-       Features:
-       platform independent : It can run on any platform that supports java.
-                             compiler converts sourcecode to byte code,
-                             then the jvm executes the byte code.
-                             Each OS has its own JVM for executing byte code.
-       Clear verbose syntax :
-       multi-paradigm : is object oriented but supports imperative, generic, concurrent functional paradigms as well.
-       Garbage collection : JVM performs automatic de-allocation of unused objects at runtime.
-       Multithreading : allows concurrent and parallel execution of several parts of a java program
-    `,`
-    Need JRE java runtime environment  to run java applications.
-    NEED JDK to compile java programs .
-    The JDK adds compiler on top of the JRE standard libraries and JVM.
-
-    Java source code has.java extension.
-    bytecode has .class extension. javac converts to byte code.
-    JVM executes bytecode
-    or translates the java commands into low-level instructions of the operating system.
-
-    All java programs run inside a container , and start and end with a main method.
-
-    :Java access modifier keywords:
-    public - the main method can be accessed from any method during the
-    program's execution.
-    static - the method can be invoked without creating an instance of the class that
-     contains it, making it a global method.
-     :return type keyword:
-    void - the method doesn't return any value.
-    ::
-    args - String array that holds command line arguments.
-
-    `,`
-    Abstraction- By simplifying objects to a set of
-    useful features, we hide irrelevant details, reduce complexity, and increase efficiency. Complicated
-    real-world objects are reduced to simple representations
-
-    Encapsulation - Objects should group together related variables and functions and be in complete control
-     over them. So the state of an object should only change through the object itself. Also known
-      as data hiding and no outside object or function should interfere.
-
-    Inheritance -
-    classes can reuse code from existing ones. This establishes a superclass-subclass (or parent-child)
-    relationship where the derived classes inherit fields and methods from its parent.
-
-    Polymorphism - With inheritance, an object of a derived class can be referenced as instances of its parent
-     class. This provides flexibility when invoking inherited methods with varying implementations in derived classes.
-
-    Scope : is based on location of the declaration.
-    Static or class scoped -visible to all instances of a related class.
-    Instance or object scoped - visible to only that object instance.
-    Local or method scoped - visible only within a method.
-    Block or loop scoped - visible only within a block statement.
-    `,`
-    Access modifiers
-    private - accessible only within the context of that class
-    default - accessible within the context of a package
-    protected - accessible to the package, but also to derived child classes outside of the package
-    public - accessible anywhere
-    `,`
-    Exception Handling
-When something wrong occurs during execution, the current stack frame will throw an exception.
-If the exception is not handled, or thrown up the stack to be handled elsewhere, the program will crash.
-Good exception handling helps a program continue execution.
-Common issues which can throw exceptions involve :
-stack or heap memory overflow, an array iterating out of bounds, or an interrupted stream or thread.
-
-Checked Exceptions are compile-time issues that must be handled or thrown before the compiler can
- build, such as IOException. Unchecked Exceptions occur at runtime, so the compiler cannot predict
- them and does not force them to be handled. Most unchecked exceptions extend RuntimeException, such as
- NullPointerException. Errors are serious issues and should not be handled, such as StackOverflowError.
-
- :Throws:
-The throws keyword re-throws an exception up the stack to the method that called the throwing method.
-If the exception is continually thrown and never handled, the compiler will be satisfied in the case
- of checked exceptions but any issues will still break the program.
-
-    `,`
-    :Finally:
-      Try blocks can be followed by one finally block, and can either replace the mandatory single catch
-      block or follow one or more catch blocks. They are always guaranteed to execute, even if no exceptions
-      are thrown, and are useful for closing resources that may be left open in memory due to an interruption
-      from a thrown exception.
-
-    :Try-with-resources:
-      Declaring and defining a resource - any object that implements AutoCloseable - within a pair of
-      parenthesis after the try keyword removes the necessity of a finally block to close that resource.
-
-    : InputStream/OutputStream -> BufferedReader/BufferedWriter :
-        The JVM can connect to external datasources such as files or network ports. InputStream/OutputStream
-        and its implementations stream this data as an array of bytes whereas Reader/Writer and its
-        implementations wrap InputStream/OutputStream to stream data as a char array. BufferedReader/BufferedWriter
-        wraps Reader/Writer to stream several characters at a time, minimizing the number of I/O operations needed.
-
-     :Scanner:
-        BufferedReader provides many convenient methods for parsing data. Scanner can achieve the same, but unlike
-        BufferedReader it is not thread-safe. It can however parse primitive types and Strings with regular
-        expressions. Scanner has a buffer as well but its size is fixed and smaller than BufferedReader by
-        default. BufferedReader requires handling IOException while Scanner does not. Thus, Scanner is best
-        used for parsing input into tokenized Strings.
-    `,`
-    :Generics:
-When passing objects into methods and data structures, a developer can overload or extend for its specific
-type or cast the object up and down its inheritance heirarchy. In contrast a generic type improves code
-reuse and type safety, reducing code by allowing methods and data structures to accept any type without
-risking dynamic runtime exceptions. Generic type parameters act as placeholders in a method signature
-while diamond operators specify the type for the compiler to enforce at compile time:
-
-       :Collections Framework:
-Java's collections framework implement common data structures for objects.
-  - List is an ordered collection of elements. A user has the ability to place an element anywhere in the list.
-    The elements are accessable by their index. Unlike Set, List typically allows for duplicate elements such
-    that element1.equals(element2). In addition to duplicates, List allow for multiple null elements to be stored.
-  - Set is a collection of non duplicate elements meaning there will never exist a situation where element1.
-    equals(element2). In addition to this, it is implied that there can only exist one null element due to
-    the no duplicates rule.
-
-  - Queue is a collection of elements who in essence cannot be iterated, instead the Queue follows the
-    FIFO (First In First Out) rule. When an element is added to the Queue it is placed at the back and
-    when an element is pulled it is pulled from the from the front (index :0).
-  - Deque extends Queue but augments the ability to insert and remove elements at either end. The name
-    is short for "Double Ended Queue" and is pronounced "Deck".
-  - Map is an interface which stores data with a key. A map cannot contain duplicate keys; each key
-    can map to at most one value. Map can be visualized like a dictionary where only one word is paired
-    with one definition.
-    `,`
-    :Threads:
-    A thread is a unit of program execution that runs independently from other threads. Java programs
-    can consist of multiple threads of execution that behave as if they were running on independent CPUs.
-
-     Extend Thread
-     Implement Runnable
-     Anonymous Runnable Class
-     Runnable Lambda
-    `,`
-    :Maven:
-    Opinionated project management tool for build automation, dependency management, and other actions.
-    Once installed, use with the mvn command. Allows for a project to be IDE agnostic.
-
-    maven build cycle:
-    validate compile test package verify install deploy
-
-    commands
-    mvn archetype:generate
-    mvn compile
-    mvn package
-    mvn clean
-    `,`
-    SQL
-    Terminology
-    RDBMS Relational Database Management System, relational referring to relational data (i.e. tables).
-    Schema Like packages/namespaces, groupings of tables expressing some database logical structure.
-    SQL implementations There is PostgreSQL is an Enterprise Database like Oracle, SQL Server, but there are others like
-    MySQL/MariaSQL as well as non relational SQL databases (NoSQL).
-    Candidate Key A column that can uniquely identify a row (or entry) and thus is a potential candidate for a primary key.
-    Composite Key A primary key consisting of multiple columns.
-    Primary Key Unique (in that table), non-null candidate key.
-    Foreign Key A key that points to another primary key of a row (either in another table, or the same).
-    Multiplicity Refers to the relationship between linked tables. One-to-One (University, President),
-    One-to-Many (University,
-    Students), Many-to-Many (Students, Teachers). In 1:1, FKs will be within same table. 1:many,
-    FKs will be in the other table.
-    many:many, FKs will be in a junction/transition/join/lookup table.
-    Referential Integrity Enforcing data relationships, changes reflected between foreign keys.
-     No orphans, all child rows must
-    have their parent rows deleted as well.
-    Domain Integrity Column data is restricted to allowed range of allowed type.
-    ERD Entity-Relational Diagram
-    Alias The AS or IS keyword allows you to set a Table name or column name as a short variable.
-    Normalization Dividing data into separate tables to reduce redundancy and improve query speed
-    1st NF (Atomic values, No repeating Columns
-    2nd NF (Remove Partial Dependencies)
-    3rd NF (Remove Transitive Dependencies
-      `,`
-      Sublanguages
-DCL Data Control Language, setting user permissions (GRANT, REVOKE)
-DDL Data Definition Language, working with database structure (CREATE, ALTER, TRUNCATE, DROP) EX:
-DML Data Manipulation Language, working with the rows of data itself (INSERT, UPDATE, DELETE) EX:
-DQL Data Query Language, retrieving rows of data (SELECT). EX
-TCL Transaction Control Language, managing transactions (COMMIT, ROLLBACK, SAVEPOINT)
+   < SOAP >
+Before REST, SOAP (Simple Object Access Protocol) services were the most popular kind of web service.
+Unlike REST it defines a protocol for XML based communication across multiple transport protocols (HTTP, SMTP,
+FTP, etc). This protocol is uniquely defined for each SOAP service by its WSDL (Web Service Definition
+Language) XML file. But like REST which is mostly HTTP and JSON based, SOAP is largely platform independent
+being purely XML based. The SOAP message is delivered in an XML envelope carried in the body of a transport
+protocol like an HTTP POST.
 `,`
-types of joins
-Types
-Inner Join, selects records with matching values from TableA and TableB 1.
-Left (Outer) Join, TableA primary, selects all records from A with matching values from B (non-matching values included as
-null)
-2.
-Right (Outer) Join, TableB is primary, opposte of Left Join. 3.
-Cross Join, Cartesian join of two tables, if TableA has 5 rows, and TableB has 3 rows, the cross join will have 15 rows 4.
-Subquery is a query nested in the WHERE clause of a SELECT statement, in orde3r to further restrict the data returned. There
-are correlated and non-correlated. Correlated subqueries depend on the outer query to exist, meaning they cannot execute
-independently
+    < WSDL >
+The Web Service Description Language (WSDL) is an XML document describing
+everything about a SOAP service. It can be accessed on the endpoint of an exposed SOAP service with the ?wsdl
+query string. The WSDL can be thought of as  an interface or contract for the whole service, which is either
+generated by a preconfigured WSDL file (contract-first) or generates a WSDL from its source code (contract-last).
 
-Unions
-UNION returns distinct rows present in either return set 1.
-UNION ALL returns all rows in both sets (including duplicates) 2.
-INTERSECT returns distinct rows present in both sets 3.
-EXCEPT returns all rows present in first set but not in second
+Important element tags include:
+definition - the root element
+types - any complex datatype used in document (not necessary if only simple types)
+message - define data elements for each operation (method params, return values)
+porttype - defines operations that can be performed and the messages involved
+operation - abstract description of action supported by service
+binding - specify protocol and data format for operations and messages
+service - specify port address(es) of binding
+port - specify single endpoint as address for binding
+`,`
+    < JAX-WS >
+Java API for XML Web Services (JAX-WS) is Java's standard library of annotations and classes that can expose a SOAP
+service. It has standard implementations for annotations like @WebService, @WebMethod, and @WebParam among others,
+as well as the Endpoint.publish() method that will host an annotated service and generate the WSDL. It will use JAX-B
+to marshall Java objects into XML format and unmarshall them as well. Other frameworks such as Apache CXF implement
+and extend JAX-WS for more complex web services.
 
-   Functions
-Sequences Generate numeric sequence, mostl for creating/managing primary keys.
-Views Virtual table that displays the results of a SELECT statement, lets you reuse and store complex queries
-Indexes Physical ordering of a column or group of columns, having unique indexes
-Aggregate Functions (AVG, MIN, MAX, SUM, COUNT) perform an action on an entire column
-Scalar functions (LOWER, UPPER) operate on individual entries
-Functions Custom function with 0 or many input parameters, but 0 or 1 output. DML is not allowed.
-Stored Procedures Custom function with 0 or many input parameters, but 0 or many output parameters. DML allowed
-    `,`done`];
+Soap Binding styles
+When translating the WSDL binding element to a SOAP message, there are...
+Model: Literal (DOCUMENT) vs Encoded (RPC)
+DOCUMENT you define XML structure of message body (message-oriented)
+Literal: contents conform to user-defined xsd
+RPC request body must contain operation name and method parameters
+Encoded: uses xsd datatypes but body doesn't need to conform to user-defined xsd
+`,`
+SOAP Message
+A SOAP message is defined by the WSDL and carried inside an XML document called an envelope.
+Envelope (mandatory), defines start/end of message
+Header (optional), optional attributes to be used when processing message
+Body (mandatory), XML data with message to be sent (only one allowed)
+Fault (optional), describes errors that may have occurred when processing
+
+Message Structure
+[code example]
+To generate a SOAP message and envelope, use the JDK's wsimport tool to create Java class files to communicate directly
+with the service, or use a tool like Wizdler.
+
+Faults
+Fault blocks carry error messages of failed SOAP requests. Only one fault block is allowed per message. They are optional and
+generally include an HttpBinding success code (Success: 200-299). Elements include:
+[code example]
+`,`
+                < Design Patterns: Dependency Injection >
+Some classes require another class, a dependency. While the dependency can be defined in the dependant class's own
+constructor, this introduces several problems such as tightly coupling the two classes and introducing difficulties during unit
+testing. To solve this, we can inject the dependency as an argument into the dependant class's constructor or setter.
+
+Unfortunately, Order needs to lookup its Customer dependency elsewhere. You'll need to construct dependencies recursively:
+
+We can let Spring's IoC Container handle the factory logic for us instead.
+`,`
+                      < Spring Framework >
+Spring Framework is a highly modular Application Framework built upon an IoC Container. It offers similar features to
+JavaEE's EJBs and can interface well with many other specifications such as JPA. Spring can be configured and deployed
+without the need for an application server with only a few modules, or it can become a self-executing server in the form of a
+Spring Boot project.
+`,`
+              < Inversion of Control (IoC) Container >
+Spring implements inversion of control through its Core IoC Container, which manages object lifecycles and automatic
+dependency injection. An object managed by the container, known as a Spring Bean, is instantiated, deployed when requested,
+and destroyed automatically. Any dependencies required by the bean are also injected through constructor arguments, arguments
+to a factory method, or properties set on the object instance after its construction. The IoC Container is known today as the
+Application Context, and originally called the Bean Factory.
+
+The goal of an IoC Container is to decouple execution from configuration (business logic from factory logic). By separating
+these concerns, an application's code base becomes more modular, loosely coupled, with less focus on how code will be
+implemented and more on its business logic.
+
+The phrase 'inversion of control' refers to this process of configuring dependencies for a bean, rather than the bean controlling
+the process for its own dependencies.
+`,`
+                          < Modules >
+The IoC container is made up of the spring-core, spring-beans, and spring-context modules, but other dependent modules such as
+spring-aop are commonly used as well. The container can be further extended with the inclusion of other Spring frameworks
+such as spring-mvc, spring-data, spring-security, spring-cloud, and much more.
+`,`
+                                            < Configuration >
+While Spring Boot consolidates many modules and follows a 'convention over configuration' approach, most Spring modules
+can be individually configured either through an XML file or through Java annotations. Spring Boot can load properties files and
+also offers native support for YAML.
+
+Many modules provide their own preconfigured beans, but custom beans can also be configured by registering them in the XML
+configuration file or through annotations which are then scanned by the container. Once all beans and configuration options are
+gathered, an Application Context is created to act as the IoC container for a program.
+
+The Application Context is an interface with several factories to build one according to the manner of configuration, such as
+ClassPathXmlApplicationContext or FileSystemXmlApplicationContext for XML files, or XmlWebApplicationContext for
+Spring MVC built on Tomcat. There is also AnnotationConfigApplicationContext for a configuration class.
+
+`,`
+
+          < BeanFactory vs ApplicationContext >
+The Bean Factory was the original interface for Spring, and has been superceded by the more capable Application Context. Bean
+Factory was a sophisticated implementation of the factory design pattern which lazily and programmatically instantiate beans as
+singletons.
+Application Context is an extension of the Bean Factory, eagerly instantiating beans and capable of defining several different
+scopes besides singleton.
+`,`
+        < Bean Lifecycle >
+Spring's container handles the lifecycle of a bean through a complex series of steps. In general, the setup phase involves
+instantiation of the empty object, handling of its dependencies, initialization of properties and default values, and any custom
+initialization methods before the bean is ready for use within the program. The teardown phase dereferences the bean when it
+passes out of scope (or the container is itself shutdown), but also calls any custom destroy methods along the way.
+
+Simplified Lifecycle:
+1. Instantiate Bean
+2. Populate Bean (Inject Dependencies)
+3. Set awareness of context values
+4. BeanPostProcessor
+5. (Optional) Custom Init method
+6. Bean is ready for use! (Bean Mitzvah)
+7. destroy()/custom destroy method (when container is shut down)
+
+As a rule, we do not need to interfere with the lifecycle, but Spring provides several callback methods to customize it in subtle
+ways. We can implement the InitializingBean/DisposableBean interfaces and override their afterPropertiesSet/destroy methods,
+or we can define our own custom init and destroy methods in XML configuration or through @PostConstruct/@PreDestroy
+annotations.
+`,`
+< Bean Scopes >
+A bean has several scopes, two of which are available to a basic Application Context while the rest are usually seen in a Spring
+web program.
+
+Scope Description
+singleton (Default) — Scopes a single bean definition to a single object instance for each Spring IoC container.
+prototype — Scopes a single bean definition to any number of object instances.
+request   —  Scopes a single bean definition to the lifecycle of a single HTTP request. That is, each HTTP request has its own instance of
+a bean created off the back of a single bean definition. Only valid in the context of a web-aware Spring ApplicationContext.
+session — Scopes a single bean definition to the lifecycle of an HTTP Session. Only valid in the context of a web-aware Spring
+ApplicationContext.
+application — Scopes a single bean definition to the lifecycle of a ServletContext. Only valid in the context of a web-aware Spring
+ApplicationContext.
+websocket Scopes — a single bean definition to the lifecycle of a WebSocket. Only valid in the context of a web-aware Spring
+ApplicationContext.
+
+The most important are Singleton and Prototype for most Spring applications. Singleton is the default scope where there is one
+bean (of its kind) per container, which is best for stateless objects. This is not to be confused with a proper Java singleton which
+has hardcoded scope within a class loader. A Singleton scoped bean is cached and returned whenever that named object is
+requested.
+
+Prototype scope can have any number of instances per bean definition, and instead of caching existing beans a new instance is
+created for each bean request. This makes it ideal for stateful objects, but Spring no longer manages the full lifecycle for us
+making it little different from calling the 'new' keyword ourselves.
+`,`
+<Bean Wiring>
+Spring can inject beans as dependencies of other beans through Setter or Constructor Injection. Beans can be wired manually
+through property element attributes in an XML configuration file or through annotations. Dependencies can be registered and
+referenced either by its bean name or by its type.
+
+By far the most popular and easiest method is 'Autowiring' where Spring will figure out a dependency 'automagically' based on
+its Stereotype annotation.
+
+< Stereotype Annotations >
+Component is the most basic stereotype and will work for any and all Spring beans. More specific stereotypes such as
+Service or Repository mostly add unique exception handling for those purposes but otherwise work the same way as Component.
+`,`
+
+
+< AOP - Aspect Oriented Programming >
+
+In OOP, the unit of modularity is the object or class, but it doesn't resolve some issues of tightly coupled code that is only
+tangentially related to your business logic:
+
+Logging, Exception Handling, Configurations, Security/Validation, Transactions, Tests
+
+In other words: cross-cutting concerns.
+In AOP, the unit of modularity is the aspect, otherwise known as a cross-cutting concern. These are code snippets or statements
+that can be injected into an application which is decoupled from the business logic.
+
+`,`
+< Spring AOP >
+
+With Spring we can define aspects as a class that has several methods which will act as interceptors to other methods in our
+application. These interceptors are known as advices which will take certain types of actions.
+
+Advice: Action to be taken at Join Point
+Join Point: Method where code will be injected
+Pointcut: expression which specifies join points where advices will be applied
+`,`
+: Advice :
+Action that occurs at the joinpoint which has several types:
+
+Before: preceeds join point, can't interfere with the joinpoint unless exception is thrown
+After - proceeds join point (After-Finally)
+After-returning: proceeds normal execution of joinpoint
+After-throwing proceeds if exeption is thrown
+Around - the most powerful advice, acts both before and after, and requires that the developer calls JoinPoint.proceed() to
+continue join point execution.
+
+: Pointcut :
+Each advice will have an expression next to their Advice annotation which determines what to listen for in the stack.
+
+- Target: object or method being advised
+- AOP Proxy from Spring AOP framework will intercept calls to target and delegate appropriate advice
+
+
+: Examples code lines :
+Execution of any public method
+execution(public * *(..))
+Execution of any method starting with 'set'
+execution(* set*(..))
+Execution of any method defined within AnimalService interface
+execution(* com.revature.service.AnimalService.*(..))
+Execution of any method defined within com.revature.demo package execution(* com.revature.demo.*.*(..))
+Now in subpackage execution(* com.revature.demo..*(..))
+Within a package
+within(com.revature.demo.*)
+`,`
+< Spring Web MVC >
+
+Spring's web framework is built on the Servlet API and deployed on its own embedded Servlet container. Centered around its
+Dispatcher Servlet, Spring MVC handles much of the complexity of the request-response cycle.
+
+< MVC Design Pattern >
+Model: The data being passed, rendered, and manipulated
+View: What will be displayed, usually as html
+Controller: Handles logic, routing
+
+`,`
+< Spring MVC Request-Response Flow >
+
+
+1 .Request sent to DispatcherServlet
+2. DispatcherServlet calls HandlerMapping for help with request URI
+3. HandlerMapping looks up the handler for the URI, a registered Controller which is returned to the DispatcherServlet and called
+4. Controller is the entry-point for an event in and out of the rest of the program
+5. Controller returns a View name & Model to the DispatcherServlet
+6. DispatcherServlet consults ViewResolver to interpret View name as a template file and weave the Model into the response body
+7. Response sent to client
+`,`
+
+
+< DispatcherServlet >
+
+Spring MVC's front controller has its own WebApplicationContext, allowing it to handle more bean scopes than singleton and prototype. It manages Controllers, HandlerMapping, ViewResolver, and all other components
+
+< HandlerMapping >
+While configurable using RequestMappingHandlerMapping objects, it can be simply enabled using a
+<mvc:@annotation-driven/> element tag in configuration, allowing for component scanning to automatically register all
+@Controller and similar beans along with their mappings. It is responsible for routing requests to specific methods within these
+controllers.
+
+
+< Controllers >
+A @Controller stereotype annotation registers a class as a library of methods mapped to URI paths to handle requests.
+Several related annotations help to further specify these requests and their expected responses.
+@RequestMapping specifies the URI with attributes like value for the path and method for the HTTP verb, and can be
+defined at the class or method level.
+@GetMapping is a shorthand form of a @RequestMapping with GET assumed as its method. Also has siblings in
+@PostMapping and similar annotations.
+@RequestParam can be used on method parameters to bind form or query attributes to arguments.
+@PathVariable can be used on method parameters to bind URI path variables to arguments.
+@ResponseBody tags a method (or all methods of a class) to write their return objects directly to the response body,
+skipping the ViewResolver entirely.
+
+< ViewResolver >
+ViewResolvers handle server-side view resolution for static HTML/CSS/JS files, or rendering for dynamic templates like JSPs
+or Thymeleaf files.
+`,
+`
+--------------------------done done-----------------------------
+
+`];
 
   //=================================================================
   //
@@ -280,7 +333,7 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
   //=================================================================
   drawProgress(){
       this.now=this.now.replace(/ϯ/g,'');
-      this.total_words=this.now.match(/[^\ ]+/g).length;
+      this.total_words=this.ans_key.match(/\w+/g).length;
       let blanks_count= this.now.match(/\#+/g).length;
       this.done_count=this.total_words-blanks_count;
   }
