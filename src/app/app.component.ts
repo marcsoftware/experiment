@@ -78,15 +78,6 @@ Fault blocks carry error messages of failed SOAP requests. Only one fault block 
 generally include an HttpBinding success code (Success: 200-299). Elements include:
 [code example]
 `,`
-                < Design Patterns: Dependency Injection >
-Some classes require another class, a dependency. While the dependency can be defined in the dependant class's own
-constructor, this introduces several problems such as tightly coupling the two classes and introducing difficulties during unit
-testing. To solve this, we can inject the dependency as an argument into the dependant class's constructor or setter.
-
-Unfortunately, Order needs to lookup its Customer dependency elsewhere. You'll need to construct dependencies recursively:
-
-We can let Spring's IoC Container handle the factory logic for us instead.
-`,`
                       < Spring Framework >
 Spring Framework is a highly modular Application Framework built upon an IoC Container. It offers similar features to
 JavaEE's EJBs and can interface well with many other specifications such as JPA. Spring can be configured and deployed
@@ -333,7 +324,7 @@ or Thymeleaf files.
   //=================================================================
   drawProgress(){
       this.now=this.now.replace(/ϯ/g,'');
-      this.total_words=this.ans_key.match(/\w+/g).length;
+      this.total_words=(this.ans_key.match(/\w+/g).length);
       let blanks_count= this.now.match(/\#+/g).length;
       this.done_count=this.total_words-blanks_count;
   }
@@ -393,6 +384,11 @@ or Thymeleaf files.
     this.drawQuestion();
   }
 
+  reset(){
+    this.ans_key=this.dict[this.page_count];
+    this.drawQuestion();
+    this.drawProgress();
+  }
 
   reveal(re: any){
       this.ans_key=this.ans_key.replace(re,' ϯ ');
