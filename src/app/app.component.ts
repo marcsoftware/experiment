@@ -265,6 +265,7 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
   //renders stuff on screen
   drawQuestion(){
 
+      //hide words that are not surrounded with  ϯ
       let regex = /ϯ[^ϯ]+ϯ|(\w)/g;
         this.now = this.ans_key.replace(regex, function(m, group1) {
           if (!group1) return m;
@@ -293,7 +294,7 @@ Stored Procedures Custom function with 0 or many input parameters, but 0 or many
   hint(event:any){
         let user_input=event.target.value.trim();
         if(user_input===';'){
-          this.now=this.ans_key;
+          this.now=this.ans_key.replace(/ϯ/g,'');
           this.flag=true;
         }else if(user_input===';;'){
           event.target.value='';
