@@ -20,8 +20,8 @@ export class SmallComponent {
  done_count=0;
   ans_key;
 
-
-   dict=[`
+dict:any;
+   old_dict=[`
    < SOAP >
    (Simple Object Access Protocol)
 Before REST, SOAP  was most popular kind of web service.
@@ -302,9 +302,14 @@ or Thymeleaf files.
 
   ngOnInit() {
 
+    this.dict=this.old_dict.join('\n').split('\n');
+    this.dict= this.dict.filter(function (el) {
 
-    this.ans_key=this.dict[this.page_count];
-      this.drawQuestion();
+      return (el.match(/[a-z]/g));
+    });
+    console.log(this.dict);
+    this.ans_key=' '+this.dict[this.page_count]+' ';
+    this.drawQuestion();
   }
 
 
@@ -329,8 +334,10 @@ or Thymeleaf files.
   //
   //=================================================================
   drawProgress(){
+
       this.now=this.now.replace(/ϯ/g,'');
       this.total_words=(this.ans_key.match(/\w+/g).length);
+
       let blanks_count= this.now.match(/\#+/g).length;
       this.done_count=this.total_words-blanks_count;
   }
@@ -393,7 +400,7 @@ or Thymeleaf files.
   }
 
   reset(){
-    this.ans_key=this.dict[this.page_count];
+    this.ans_key=' '+this.dict[this.page_count]+' ';
     this.drawQuestion();
     this.drawProgress();
   }
@@ -422,13 +429,13 @@ or Thymeleaf files.
 
   nextPage(){
     this.page_count++;
-    this.ans_key=this.dict[this.page_count];
+    this.ans_key=' '+this.dict[this.page_count]+' ';
       this.drawQuestion();
   }
 
   prevPage(){
       this.page_count--;
-      this.ans_key=this.dict[this.page_count];
+      this.ans_key=' '+this.dict[this.page_count]+' ';
       this.drawQuestion();
   }
 
