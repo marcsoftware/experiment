@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -309,9 +309,11 @@ or Thymeleaf files.
     });
     console.log(this.dict);
     this.ans_key=' '+this.dict[this.page_count]+' ';
+    this.page_count = parseInt(this.route.snapshot.paramMap.get("number"))-1;
     this.drawQuestion();
   }
 
+  constructor(private route: ActivatedRoute) { }
 
   //=================================================================
   //
