@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   { path: 'type/:subject', component: TypeComponent },
   { path: '', component: HomeComponent },
-  { path: 'small', component: HomeComponent },
+  { path: 'small', component: SmallComponent },
 
 ];
 

@@ -1,1 +1,21 @@
-<p>small works!</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+
+</div>
+<button (click)="reset()">🔄</button>
+<button (click)="prevPage()">prev</button>{{page_count+1}}/{{dict.length-1}}
+<button (click)="nextPage()">next</button>{{done_count}} /{{total_words-1}}
+<input (keyup.space)="hardInput($event)" (keyup)='hint($event)' #firstNameInput />{{feedback}}
+<pre [innerHTML]="now" id='now'></pre>
+
+
+
+
+
+<br/>
+
+
+
+
+<pre [innerHTML]="ans_key" id='key'></pre>
