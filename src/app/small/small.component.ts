@@ -328,22 +328,26 @@ or Thymeleaf files.
       });
 
         this.drawProgress();
+        if(this.blanks_count==0){
+         this.nextPage(); //automatically go to next page
+        }
   }
 
   //=================================================================
   //
   //=================================================================
+  blanks_count=0;
   drawProgress(){
 
       this.now=this.now.replace(/ϯ/g,'');
       this.total_words=(this.ans_key.match(/\w+/g).length);
-      let blanks_count
+
       try{
-         blanks_count= this.now.match(/\#+/g).length;
+         this.blanks_count= this.now.match(/\#+/g).length;
       }catch(e){
-        blanks_count=0;
+        this.blanks_count=0;
       }
-      this.done_count=blanks_count;
+      this.done_count=this.total_words-this.blanks_count;
   }
 
 
