@@ -337,9 +337,13 @@ or Thymeleaf files.
 
       this.now=this.now.replace(/ϯ/g,'');
       this.total_words=(this.ans_key.match(/\w+/g).length);
-
-      let blanks_count= this.now.match(/\#+/g).length;
-      this.done_count=this.total_words-blanks_count;
+      let blanks_count
+      try{
+         blanks_count= this.now.match(/\#+/g).length;
+      }catch(e){
+        blanks_count=0;
+      }
+      this.done_count=blanks_count;
   }
 
 
