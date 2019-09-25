@@ -7,20 +7,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./small.component.css']
 })
 export class SmallComponent {
-  title = 'learn';
-  math = Math;// hack since angular does not recognize Math on the html page,
-  question :string;
-  feedback :any;
- page_count=0;
 
-  count=0;
- now;
-
- total_words=0;
- done_count=0;
-  ans_key;
-
-dict:any;
    old_dict=[`
    < SOAP >
    (Simple Object Access Protocol)
@@ -266,35 +253,54 @@ Controller: Handles logic, routing
 
 < DispatcherServlet >
 
-Spring MVC's front controller has its own WebApplicationContext, allowing it to handle more bean scopes than singleton and prototype. It manages Controllers, HandlerMapping, ViewResolver, and all other components
+Spring MVC's front controller has its own WebApplicationContext,
+ allowing it to handle more bean scopes than singleton and prototype.
+  It manages Controllers, HandlerMapping, ViewResolver, and all other components
 
 < HandlerMapping >
-While configurable using RequestMappingHandlerMapping objects, it can be simply enabled using a
-<mvc:@annotation-driven/> element tag in configuration, allowing for component scanning to automatically register all
-@Controller and similar beans along with their mappings. It is responsible for routing requests to specific methods within these
-controllers.
-
+While configurable using RequestMappingHandlerMapping objects,
+it can be simply enabled using a <mvc:@annotation-driven/> element tag in configuration,
+ allowing for component scanning to automatically register all
+@Controller and similar beans along with their mappings.
+ It is responsible for routing requests to specific methods within these controllers.
 
 < Controllers >
 A @Controller stereotype annotation registers a class as a library of methods mapped to URI paths to handle requests.
 Several related annotations help to further specify these requests and their expected responses.
-@RequestMapping specifies the URI with attributes like value for the path and method for the HTTP verb, and can be
-defined at the class or method level.
-@GetMapping is a shorthand form of a @RequestMapping with GET assumed as its method. Also has siblings in
-@PostMapping and similar annotations.
+@RequestMapping specifies the URI with attributes like value for the path and method for the HTTP verb,
+and can be defined at the class or method level.
+@GetMapping is a shorthand form of a @RequestMapping with GET assumed as its method.
+ Also has siblings in @PostMapping and similar annotations.
 @RequestParam can be used on method parameters to bind form or query attributes to arguments.
 @PathVariable can be used on method parameters to bind URI path variables to arguments.
 @ResponseBody tags a method (or all methods of a class) to write their return objects directly to the response body,
 skipping the ViewResolver entirely.
 
 < ViewResolver >
-ViewResolvers handle server-side view resolution for static HTML/CSS/JS files, or rendering for dynamic templates like JSPs
-or Thymeleaf files.
+ViewResolvers handle server-side view resolution for static HTML/CSS/JS files, or rendering for dynamic templates like JSPs.
 `,
 `
 --------------------------done done-----------------------------
 
 `];
+
+
+title = 'learn';
+math = Math;// hack since angular does not recognize Math on the html page,
+question :string;
+feedback :any;
+page_count=0;
+
+count=0;
+now;
+
+total_words=0;
+done_count=0;
+ans_key;
+
+dict:any;
+
+cycle_count=0;
 
   //=================================================================
   //
@@ -308,8 +314,9 @@ or Thymeleaf files.
       return (el.match(/[a-z]/g));
     });
     console.log(this.dict);
-    this.ans_key=' '+this.dict[this.page_count]+' ';
     this.page_count = parseInt(this.route.snapshot.paramMap.get("number"))-1;
+    this.ans_key=' '+this.dict[this.page_count]+' ';
+
     this.drawQuestion();
   }
 
@@ -331,8 +338,14 @@ or Thymeleaf files.
 
         this.drawProgress();
         if(this.blanks_count==0){
-         this.nextPage(); //automatically go to next page
+          if(this.cycle_count==this.cycle_size){
+            this.goaback();
+          }else{
+            this.nextPage(); //automatically go to next page
+          }
         }
+
+
   }
 
   //=================================================================
@@ -375,7 +388,9 @@ or Thymeleaf files.
         }
   }
 
-
+  //=================================================================
+  //
+  //=================================================================
   hardInput(event: any){
 
     let user_input=event.target.value.trim();
@@ -409,17 +424,29 @@ or Thymeleaf files.
     this.drawQuestion();
   }
 
+  //=================================================================
+  //
+  //=================================================================
+
   reset(){
     this.ans_key=' '+this.dict[this.page_count]+' ';
     this.drawQuestion();
     this.drawProgress();
   }
 
+  //=================================================================
+  //
+  //=================================================================
+
   reveal(re: any){
       this.ans_key=this.ans_key.replace(re,' ϯ ');
       this.drawQuestion();
   }
 
+
+  //=================================================================
+  //
+  //=================================================================
 
   //do this everytime user enter correct input
   correctInput(event){
@@ -431,21 +458,52 @@ or Thymeleaf files.
       this.drawQuestion();
   }
 
+  //=================================================================
+  //
+  //=================================================================
+remainder:any;
+ drawRemainder(){
+   this.remainder= this.dict.slice(this.page_count+1).join('\n');
+ }
 
-
-
-
-
-
+  //=================================================================
+  //
+  //=================================================================
+ cycle_size=5;
   nextPage(){
+    this.cycle_count++;
     this.page_count++;
+
+    if(this.cycle_count>this.cycle_size){
+      this.cycle_count=this.cycle_size;
+    }
+
     this.ans_key=' '+this.dict[this.page_count]+' ';
       this.drawQuestion();
+      this.drawRemainder();
   }
 
+  //=================================================================
+  //
+  //=================================================================
   prevPage(){
+    this.cycle_count--;
+    if(this.cycle_count<0){
+      this.cycle_count=0;
+    }
       this.page_count--;
       this.ans_key=' '+this.dict[this.page_count]+' ';
+      this.drawQuestion();
+      this.drawRemainder();
+  }
+
+  //=================================================================
+  //
+  //=================================================================
+  //go back to start of cycle
+  goaback(){
+      this.page_count -=this.cycle_size;
+      this.cycle_count=0;
       this.drawQuestion();
   }
 

@@ -3,8 +3,8 @@
 
 
 </div>
-
-<a href="http://localhost:4201/type/a">full</a><br/><button (click)="reset()">🔄</button>
+{{cycle_count}}
+<button (click)="reset()">🔄</button>
 <button (click)="prevPage()">prev</button>{{page_count+1}} / {{dict.length-1}}
 <button (click)="nextPage()">next</button>{{done_count}} /{{total_words}}
 <input (keyup.space)="hardInput($event)" (keyup)='hint($event)' #firstNameInput />{{feedback}}<br/>
@@ -15,7 +15,7 @@
 
 
 <br/>
-
+<pre [innerHTML]="remainder" ></pre>
 
 
 
