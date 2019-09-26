@@ -507,6 +507,17 @@ remainder:any;
       this.drawQuestion();
   }
 
+
+  //=================================================================
+  //
+  //=================================================================
+  nextCycle(){
+    this.page_count+=(this.cycle_size-this.cycle_count);
+    this.cycle_count=0;
+    this.reset();
+    this.drawQuestion();
+    this.drawRemainder();
+  }
 }
 
 

@@ -3,7 +3,7 @@
 
 
 </div>
-{{cycle_count}}
+{{cycle_count}}<button (click)="nextCycle()">⇝</button>{{done_count}} /{{total_words}}
 <button (click)="reset()">🔄</button>
 <button (click)="prevPage()">prev</button>{{page_count+1}} / {{dict.length-1}}
 <button (click)="nextPage()">next</button>{{done_count}} /{{total_words}}
