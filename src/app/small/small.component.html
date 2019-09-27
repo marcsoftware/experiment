@@ -2,11 +2,20 @@
 <div style="text-align:center">
 
 
+
 </div>
+
+<button (click)="setZero()">♻️</button>
+
 {{cycle_count}}<button (click)="nextCycle()">⇝</button>{{done_count}} /{{total_words}}
 <button (click)="reset()">🔄</button>
 <button (click)="prevPage()">prev</button>{{page_count+1}} / {{dict.length-1}}
 <button (click)="nextPage()">next</button>{{done_count}} /{{total_words}}
+<input
+  type="checkbox"
+  [checked]="isHidden"
+  (change)="isHidden = !isHidden"/>
+
 <input (keyup.space)="hardInput($event)" (keyup)='hint($event)' #firstNameInput />{{feedback}}<br/>
 <pre [innerHTML]="now" id='now'></pre>
 

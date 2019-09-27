@@ -284,7 +284,7 @@ ViewResolvers handle server-side view resolution for static HTML/CSS/JS files, o
 
 `];
 
-
+isHidden=false;
 title = 'learn';
 math = Math;// hack since angular does not recognize Math on the html page,
 question :string;
@@ -331,10 +331,12 @@ cycle_count=0;
 
       //hide words that are not surrounded with  ϯ
       let regex = /ϯ[^ϯ]+ϯ|(\w)/g;
+
         this.now = this.ans_key.replace(regex, function(m, group1) {
           if (!group1) return m;
           else return "#";
       });
+
 
         this.drawProgress();
         if(this.blanks_count==0){
@@ -432,6 +434,7 @@ cycle_count=0;
     this.ans_key=' '+this.dict[this.page_count]+' ';
     this.drawQuestion();
     this.drawProgress();
+
   }
 
   //=================================================================
@@ -466,10 +469,17 @@ remainder:any;
    this.remainder= this.dict.slice(this.page_count+1).join('\n');
  }
 
+   //=================================================================
+  //
+  //=================================================================
+  setZero(){
+    this.cycle_count=0;
+  }
+
   //=================================================================
   //
   //=================================================================
- cycle_size=5;
+ cycle_size=4;
   nextPage(){
     this.cycle_count++;
     this.page_count++;
@@ -502,6 +512,12 @@ remainder:any;
   //=================================================================
   //go back to start of cycle
   goaback(){
+      if(!this.isHidden){
+        this.cycle_count=0;
+        this.page_count++;
+        this.drawQuestion();
+          return ;
+      }
       this.page_count -=this.cycle_size;
       this.cycle_count=0;
       this.drawQuestion();
@@ -512,7 +528,7 @@ remainder:any;
   //
   //=================================================================
   nextCycle(){
-    this.page_count+=(this.cycle_size-this.cycle_count);
+    this.page_count+=(this.cycle_size-this.cycle_count)+1;
     this.cycle_count=0;
     this.reset();
     this.drawQuestion();
