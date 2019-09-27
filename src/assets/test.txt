@@ -4,7 +4,7 @@
   < SOAP >
   (Simple Object Access Protocol)
 Before REST, SOAP  was most popular kind of web service.
-Unlike REST it defines a protocol for XML based communication across multiple transport protocols
+Unlike REST it defines a protocol for XML based communication across multiple transport protocols\n\r
 (HTTP, SMTP, FTP).
 This protocol is uniquely defined for each SOAP service by its WSDL xml file.
 REST is platform independent being HTTP and JSON based.
