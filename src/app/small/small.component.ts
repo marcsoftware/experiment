@@ -19,7 +19,7 @@ title = 'learn';
 math = Math;// hack since angular does not recognize Math on the html page,
 question :string;
 feedback :any;
-page_count=0;
+page_count=1;
 
 count=0;
 now;
@@ -213,10 +213,10 @@ remainder:any;
   //=================================================================
   deleteEmpty(){
 
-
+    this.dict=this.dict.join(' ').replace(/\n/g,'').replace(/\./g,".\n").replace(/\n+/g,'\n').split("\n");
     this.dict= this.dict.filter(function (el) {
 
-      return (el.match(/[a-z]/gi));
+      return (el.match(/[a-z]/gi)) && (el !== 'undefined');
     });
 
     this.page_count = parseInt(this.route.snapshot.paramMap.get("number"))-1;
