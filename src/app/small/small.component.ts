@@ -41,14 +41,10 @@ cycle_count=0;
     this.http.get('assets/test.txt', { responseType: 'text' })
     .subscribe(data => {
       console.log(this);
-      this.dict=data.split("`,`");
+      this.dict=data.split("`,`").join('\n').split('\n');
     });
 
-    this.dict=this.dict.join('\n').split('\n');
-    this.dict= this.dict.filter(function (el) {
 
-      return (el.match(/[a-z]/g));
-    });
 
     this.page_count = parseInt(this.route.snapshot.paramMap.get("number"))-1;
     this.ans_key=' '+this.dict[this.page_count]+' ';
@@ -205,12 +201,31 @@ remainder:any;
    this.remainder= this.dict.slice(this.page_count+1).join('\n');
  }
 
-   //=================================================================
+ //=================================================================
   //
   //=================================================================
   setZero(){
     this.cycle_count=0;
   }
+
+  //=================================================================
+  //
+  //=================================================================
+  deleteEmpty(){
+
+
+    this.dict= this.dict.filter(function (el) {
+
+      return (el.match(/[a-z]/gi));
+    });
+
+    this.page_count = parseInt(this.route.snapshot.paramMap.get("number"))-1;
+    this.ans_key=' '+this.dict[this.page_count]+' ';
+
+    this.drawQuestion();
+
+  }
+
 
   //=================================================================
   //

@@ -1,6 +1,4 @@
-{
 
-  "microservice":{"
   < SOAP >
   (Simple Object Access Protocol)
 Before REST, SOAP  was most popular kind of web service.
@@ -11,7 +9,7 @@ REST is platform independent being HTTP and JSON based.
 SOAP is platform independent since is xml based.
 The SOAP message is delivered in an XML envelope carried in the body of a transport
 protocol like HTTP POST.
-`,`
+
    < WSDL >
 The Web Service Description Language
 It is an XML document describing everything about a SOAP service.
@@ -29,7 +27,7 @@ operation - abstract description of action supported by service
 binding - specify protocol and data format for operations and messages
 service - specify port address(es) of binding
 port - specify single endpoint as address for binding
-`,`
+
    < JAX-WS >
 Java API for XML Web Services
 is Java's standard library of annotations and classes that can expose a SOAP service.
@@ -44,7 +42,7 @@ DOCUMENT you define XML structure of message body (message-oriented)
 Literal: contents conform to user-defined xsd
 RPC request body must contain operation name and method parameters
 Encoded: uses xsd datatypes but body doesn't need to conform to user-defined xsd
-`,`
+
 SOAP Message
 A SOAP message is defined by the WSDL and carried inside an XML document called an envelope.
 Envelope (mandatory), defines start/end of message
@@ -61,14 +59,14 @@ Faults
 Fault blocks carry error messages of failed SOAP requests. Only one fault block is allowed per message. They are optional and
 generally include an HttpBinding success code (Success: 200-299). Elements include:
 [code example]
-`,`
+
                      < Spring Framework >
 Spring Framework is a highly modular Application Framework built upon an IoC Container.
 It offers similar features and  can interface well with many other specifications such as JPA.
 Spring can be configured and deployed without the need for an application server with only a few modules,
 or it can become a self-executing server in the form of a
 Spring Boot project.
-`,`
+
              < Inversion of Control (IoC) Container >
 Spring implements inversion of control through its Core IoC Container, which manages object lifecycles and automatic
 dependency injection. An object managed by the container, known as a Spring Bean, is instantiated, deployed when requested,
@@ -82,12 +80,12 @@ implemented and more on its business logic.
 
 The phrase 'inversion of control' refers to this process of configuring dependencies for a bean, rather than the bean controlling
 the process for its own dependencies.
-`,`
+
                          < Modules >
 The IoC container is made up of the spring-core, spring-beans, and spring-context modules, but other dependent modules such as
 spring-aop are commonly used as well. The container can be further extended with the inclusion of other Spring frameworks
 such as spring-mvc, spring-data, spring-security, spring-cloud, and much more.
-`,`
+
                                            < Configuration >
 While Spring Boot consolidates many modules and follows a 'convention over configuration' approach, most Spring modules
 can be individually configured either through an XML file or through Java annotations. Spring Boot can load properties files and
@@ -101,7 +99,7 @@ The Application Context is an interface with several factories to build one acco
 ClassPathXmlApplicationContext or FileSystemXmlApplicationContext for XML files, or XmlWebApplicationContext for
 Spring MVC built on Tomcat. There is also AnnotationConfigApplicationContext for a configuration class.
 
-`,`
+
 
          < BeanFactory vs ApplicationContext >
 The Bean Factory was the original interface for Spring, and has been superceded by the more capable Application Context. Bean
@@ -109,7 +107,7 @@ Factory was a sophisticated implementation of the factory design pattern which l
 singletons.
 Application Context is an extension of the Bean Factory, eagerly instantiating beans and capable of defining several different
 scopes besides singleton.
-`,`
+
        < Bean Lifecycle >
 Spring's container handles the lifecycle of a bean through a complex series of steps. In general, the setup phase involves
 instantiation of the empty object, handling of its dependencies, initialization of properties and default values, and any custom
@@ -129,7 +127,7 @@ As a rule, we do not need to interfere with the lifecycle, but Spring provides s
 ways. We can implement the InitializingBean/DisposableBean interfaces and override their afterPropertiesSet/destroy methods,
 or we can define our own custom init and destroy methods in XML configuration or through @PostConstruct/@PreDestroy
 annotations.
-`,`
+
 < Bean Scopes >
 A bean has several scopes, two of which are available to a basic Application Context while the rest are usually seen in a Spring
 web program.
@@ -154,7 +152,7 @@ requested.
 Prototype scope can have any number of instances per bean definition, and instead of caching existing beans a new instance is
 created for each bean request. This makes it ideal for stateful objects, but Spring no longer manages the full lifecycle for us
 making it little different from calling the 'new' keyword ourselves.
-`,`
+
 <Bean Wiring>
 Spring can inject beans as dependencies of other beans through Setter or Constructor Injection. Beans can be wired manually
 through property element attributes in an XML configuration file or through annotations. Dependencies can be registered and
@@ -166,7 +164,7 @@ its Stereotype annotation.
 < Stereotype Annotations >
 Component is the most basic stereotype and will work for any and all Spring beans. More specific stereotypes such as
 Service or Repository mostly add unique exception handling for those purposes but otherwise work the same way as Component.
-`,`
+
 
 
 < AOP - Aspect Oriented Programming >
@@ -180,7 +178,6 @@ In other words: cross-cutting concerns.
 In AOP, the unit of modularity is the aspect, otherwise known as a cross-cutting concern. These are code snippets or statements
 that can be injected into an application which is decoupled from the business logic.
 
-`,`
 < Spring AOP >
 
 With Spring we can define aspects as a class that has several methods which will act as interceptors to other methods in our
@@ -189,7 +186,7 @@ application. These interceptors are known as advices which will take certain typ
 Advice: Action to be taken at Join Point
 Join Point: Method where code will be injected
 Pointcut: expression which specifies join points where advices will be applied
-`,`
+
 : Advice :
 Action that occurs at the joinpoint which has several types:
 
@@ -218,7 +215,7 @@ Execution of any method defined within com.revature.demo package execution(* com
 Now in subpackage execution(* com.revature.demo..*(..))
 Within a package
 within(com.revature.demo.*)
-`,`
+
 < Spring Web MVC >
 
 Spring's web framework is built on the Servlet API and deployed on its own embedded Servlet container. Centered around its
@@ -229,7 +226,7 @@ Model: The data being passed, rendered, and manipulated
 View: What will be displayed, usually as html
 Controller: Handles logic, routing
 
-`,`
+
 < Spring MVC Request-Response Flow >
 
 
@@ -240,7 +237,7 @@ Controller: Handles logic, routing
 5. Controller returns a View name & Model to the DispatcherServlet
 6. DispatcherServlet consults ViewResolver to interpret View name as a template file and weave the Model into the response body
 7. Response sent to client
-`,`
+
 
 
 < DispatcherServlet >
@@ -270,9 +267,5 @@ skipping the ViewResolver entirely.
 
 < ViewResolver >
 ViewResolvers handle server-side view resolution for static HTML/CSS/JS files, or rendering for dynamic templates like JSPs.
-`,
-`
---------------------------done done-----------------------------
 
-"};
-}
+-------------------------------------------------------
