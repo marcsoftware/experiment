@@ -125,6 +125,19 @@ cycle_count=0;
   //=================================================================
   //
   //=================================================================
+  myDynamicColor='red';
+  changeVisibility(){
+    if(this.isHidden){
+      this.myDynamicColor='white';
+    }else{
+      this.myDynamicColor='blue';
+    }
+
+  }
+
+  //=================================================================
+  //
+  //=================================================================
   hardInput(event: any){
 
     let user_input=event.target.value.trim();

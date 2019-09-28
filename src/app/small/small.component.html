@@ -4,6 +4,7 @@
 
 
 </div>
+
 <button (click)="deleteEmpty()">⛜ </button>
 <button (click)="setZero()">♻️</button>
 
@@ -14,18 +15,12 @@
 <input
   type="checkbox"
   [checked]="isHidden"
-  (change)="isHidden = !isHidden"/>
+  (change)="isHidden = !isHidden; changeVisibility()"/>
 
 <input (keyup.space)="hardInput($event)" (keyup)='hint($event)' #firstNameInput />{{feedback}}<br/>
 <pre [innerHTML]="now" id='now'></pre>
-
-
-
-
-
-<br/>
+<p [innerHTML]="ans_key" id='key' #key [style.color]="myDynamicColor"></p>
 <pre [innerHTML]="remainder" ></pre>
 
 
 
-<pre [innerHTML]="ans_key" id='key'></pre>
