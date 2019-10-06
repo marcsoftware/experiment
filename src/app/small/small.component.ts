@@ -35,10 +35,12 @@ cycle_count=0;
   //=================================================================
   //
   //=================================================================
-
+  subject='1';
   ngOnInit() {
+    this.subject = (this.route.snapshot.paramMap.get("subject"));
+    this.subject="assets/"+this.subject+".txt"
 
-    this.http.get('assets/test.txt', { responseType: 'text' })
+    this.http.get(this.subject, { responseType: 'text' })
     .subscribe(data => {
       console.log(this);
       this.dict=data.split("`,`").join('\n').split('\n');
@@ -125,12 +127,12 @@ cycle_count=0;
   //=================================================================
   //
   //=================================================================
-  myDynamicColor='red';
+  myDynamicColor='white';
   changeVisibility(){
     if(this.isHidden){
-      this.myDynamicColor='white';
-    }else{
       this.myDynamicColor='blue';
+    }else{
+      this.myDynamicColor='white';
     }
 
   }

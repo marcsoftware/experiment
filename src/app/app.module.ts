@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   { path: 'type/:subject', component: TypeComponent },
   { path: '', component: HomeComponent },
-  { path: 'small/:number', component: SmallComponent },
+  { path: 'small/:number/:subject', component: SmallComponent },
 
 ];
 
