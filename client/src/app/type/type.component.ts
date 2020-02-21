@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
   selector: 'app-root',
   templateUrl: './type.component.html',
   styleUrls: ['./type.component.css']
 })
+
+
 export class TypeComponent {
 
 
@@ -28,13 +33,6 @@ dict=[];
     this.subject = (this.route.snapshot.paramMap.get("subject"));
     this.subject="assets/"+this.subject+".txt"
 
-    this.http.get(this.subject, { responseType: 'text' })
-    .subscribe(data => {
-      console.log(this);
-      this.dict=data.split("`,`").join('\n').split('\n');
-      alert(this.dict);
-    });
-
     this.drawQuestion();
   }
 
@@ -47,11 +45,36 @@ dict=[];
   //renders stuff on screen
   drawQuestion(){
 
-  
-
-
+      (this.getAll());
   }
 
+  //=================================================================
+  //
+  //=================================================================
+  getAll() {
+   // return this.http.get('localhost:8080/demo/all');
+    this.http.get('https://api.github.com/users/marcsoftware', { responseType: 'text' })
+    .subscribe(data => {
+      console.log(this);
+      
+      alert(data);
+    });
+
+  }
+  
+  //=================================================================
+  // this read file from assets folder
+  //=================================================================
+  readFile(){
+
+    this.http.get(this.subject, { responseType: 'text' })
+    .subscribe(data => {
+      console.log(this);
+      this.dict=data.split("`,`").join('\n').split('\n');
+      alert(this.dict);
+    });
+
+  }
 
 
 }
