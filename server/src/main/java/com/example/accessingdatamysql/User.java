@@ -16,6 +16,7 @@ public class User {
 	private String email;
 
 	private String note;
+	
 	public Integer getId() {
 		return id;
 	}

@@ -14,4 +14,15 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     
     @Query(value="select * from User",nativeQuery=true)
     List<User> getSpecial();
+
+
+
+    /*
+@Query(
+  value = "SELECT * FROM Users u WHERE u.status = '?1'", 
+  nativeQuery = true)
+User findUserByStatusNative(Integer status);
+    */
+    @Query(value="select note from User where name = 'melcher' limit 1",nativeQuery=true)
+    List<String> customGetNote();
 }   

@@ -40,9 +40,9 @@ public class MainController {
 	}
 
 
-	@GetMapping(path="/test")
-	public @ResponseBody Iterable<User> getstuffwithquery() {
+	@GetMapping(path="/note")
+	public @ResponseBody Iterable<String> getstuffwithquery() {
 		// This returns a JSON or XML with the users
-		return userRepository.getSpecial();
+		return userRepository.customGetNote();
 	}
 }
