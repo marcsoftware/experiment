@@ -20,13 +20,14 @@ public class MainController {
 
 	@PostMapping(path="/add") // Map ONLY POST Requests
 	public @ResponseBody String addNewUser (@RequestParam String name
-			, @RequestParam String email) {
+			, @RequestParam String email,@RequestParam String note) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
 		User n = new User();
 		n.setName(name);
 		n.setEmail(email);
+		n.setNote(note);
 		userRepository.save(n);
 		return "Saved";
 	}
