@@ -13,41 +13,46 @@ import { Injectable } from '@angular/core';
 export class TypeComponent {
 
 
+
+
+
+dict=[];
+
+
+
   //=================================================================
   //
   //=================================================================
-subject='?';
+  subject='1';
   ngOnInit() {
-
     this.subject = (this.route.snapshot.paramMap.get("subject"));
-    
-      this.drawQuestion();
+    this.subject="assets/"+this.subject+".txt"
+
+    this.http.get(this.subject, { responseType: 'text' })
+    .subscribe(data => {
+      console.log(this);
+      this.dict=data.split("`,`").join('\n').split('\n');
+      alert(this.dict);
+    });
+
+    this.drawQuestion();
   }
 
   constructor(private route: ActivatedRoute,private http: HttpClient) { }
+
   //=================================================================
   //
   //=================================================================
-
+  //displays question to user
+  //renders stuff on screen
   drawQuestion(){
-    alert(this.subject);
-   
-  }
 
-  //=================================================================
-  //
-  //=================================================================
-  nextPage(){
-    
+  
+
+
   }
 
 
-  //=================================================================
-  //
-  //=================================================================
-  prevPage(){
-      
-  }
 
 }
 
