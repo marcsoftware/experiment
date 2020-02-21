@@ -23,6 +23,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
   nativeQuery = true)
 User findUserByStatusNative(Integer status);
     */
-    @Query(value="select note from User where name = 'melcher' limit 1",nativeQuery=true)
+    @Query(value="select note from User where name = 'melcher' ORDER BY id DESC limit 1  ",nativeQuery=true)
     List<String> customGetNote();
 }   
