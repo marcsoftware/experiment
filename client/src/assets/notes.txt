@@ -1,0 +1,22 @@
+spring is built upon an IOC container.
+spring is a modular framework.
+spring can be configured an deployed without need for an application server.
+spring  can be deployed as a selfexecuting server.
+---
+spring has IOC container
+objects handles by the IoC container are called beans
+-instantiated -deplyed -destroyed
+IOC container is called the application context or Beanfactory
+IOC goal is to decoupe configuration from exectution
+-loosely coupled
+Inversion of Control - bean does not control the process of contructing its dependencies
+
+---
+IOC ---> spring-core spring-beans spring-context
+application context has replaced Beanfactorybeanfactory only had singleton scope & lazy instantiation
+application context eager instantiation and five scopes
+@autowire automagicaly figures out dependencies
+OOP - smallest unit is the object . AOP - smallest unit is an aspect
+an aspect is a cross cutting concern.
+-logging -configuration -validation -testing
+AOP interceptors : advice = action. join point = method recieves injection. pointcut is the expression

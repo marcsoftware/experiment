@@ -1,0 +1,6 @@
+Spring's container handles the lifecycle of a bean through a complex series of steps. 
+In general, the setup phase involves instantiation of the empty object, 
+handling of its dependencies, initialization of properties and default values, 
+and any custom initialization methods before the bean is ready for use within the program.
+The teardown phase dereferences the bean when it passes out of scope (or the container is itself shutdown),
+but also calls any custom destroy methods along the way.

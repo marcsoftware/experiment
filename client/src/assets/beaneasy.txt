@@ -1,0 +1,5 @@
+Simplified Lifecycle:
+
+-Instantiate Bean -Populate Bean (Inject Dependencies) -Set awareness of context values
+-BeanPostProcessor -(Optional) Custom Init method -Bean is ready for use! (Bean Mitzvah)
+destroy()/custom destroy method (when container is shut down)

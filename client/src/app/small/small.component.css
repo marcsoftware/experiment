@@ -1,0 +1,24 @@
+#now{
+  color:black;
+  display: inline;
+  padding-right:10px;
+  width: 60%;
+}
+
+p{
+  padding:0px;
+  margin:0px;
+}
+
+pre{
+  padding:0px;
+}
+div{
+  font-size:30px;
+}
+
+
+#key{
+
+  color:blue;
+}
