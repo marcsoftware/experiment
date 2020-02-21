@@ -43,6 +43,6 @@ public class MainController {
 	@GetMapping(path="/note")
 	public @ResponseBody Iterable<String> getstuffwithquery() {
 		// This returns a JSON or XML with the users
-		return userRepository.customGetNote();
+		return userRepository.customGetNote("david");
 	}
 }

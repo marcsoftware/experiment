@@ -18,11 +18,14 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 
     /*
-@Query(
-  value = "SELECT * FROM Users u WHERE u.status = '?1'", 
-  nativeQuery = true)
-User findUserByStatusNative(Integer status);
+
+@Query("SELECT u FROM User u WHERE u.status = ?1 and u.name = ?2")
+User findUserByStatusAndName(Integer status, String name);
     */
-    @Query(value="select note from User where name = 'melcher' ORDER BY id DESC limit 1  ",nativeQuery=true)
-    List<String> customGetNote();
+    @Query(value="select note from User where name = ?1 ORDER BY id DESC limit 1  ",nativeQuery=true)
+    List<String> customGetNote(String name);
+
+
+    @Query(value="select note from User u where u.name = ?1 ",nativeQuery=true)
+    List<String> customTest(String name);
 }   
