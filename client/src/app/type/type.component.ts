@@ -52,8 +52,10 @@ dict=[];
   //
   //=================================================================
   getAll() {
-   // return this.http.get('localhost:8080/demo/all');
-    this.http.get('https://api.github.com/users/marcsoftware', { responseType: 'text' })
+  
+   var gitAPI = 'https://api.github.com/users/marcsoftware';
+   var springAPI = 'http://localhost:8080/demo/all';
+    this.http.get(gitAPI, { responseType: 'text' })
     .subscribe(data => {
       console.log(this);
       
