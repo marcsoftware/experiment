@@ -32,6 +32,14 @@ public class MainController {
 		return "Saved";
 	}
 
+	/*
+	@PostMapping(path= "/food",consumes = "application/json")
+	public @ResponseBody String update(@RequestBody Food food) {
+		food.setDate();
+		FoodRepository.save(food);
+		return "yes";
+	}
+	*/
 	@PostMapping(path= "/json",consumes = "application/json")
 	public @ResponseBody String update(@RequestBody User user) {
 		
