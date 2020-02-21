@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private Integer id;
-
 	private String name;
-
 	private String email;
-
 	private String note;
+	
+	public User() {}
 	
 	public User( 
 				String name,

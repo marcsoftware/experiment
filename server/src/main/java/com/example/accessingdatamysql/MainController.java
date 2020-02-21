@@ -42,9 +42,9 @@ public class MainController {
 	*/
 	@PostMapping(path= "/json",consumes = "application/json")
 	public @ResponseBody String update(@RequestBody User user) {
-		
+		//User n = new User(user.getName(),user.getEmail(),user.getNote());
 		userRepository.save(user);
-		return "yes";
+		return "saved";
 	}
 	
 	@GetMapping(path="/all")
